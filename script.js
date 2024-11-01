@@ -1,11 +1,12 @@
 const champions = [
-    { name: 'Wukong', rotas: ['imgs/jungle-icon.png'] },
-    { name: 'Xin Zhao', rotas: ['imgs/Top-icon.png'] },
-    { name: 'Riven', rotas: ['imgs/jungle-icon.png'] },
-    { name: 'Viego', rotas: ['imgs/jungle-icon.png'] },
-    { name: 'Lilia', rotas: ['imgs/jungle-icon.png'] },
-    { name: 'Rengar', rotas: ['imgs/jungle-icon.png'] },
-    { name: 'Volibear', rotas: ['imgs/jungle-icon.png', 'imgs/Top-icon.png'] } 
+    { name: 'Wukong', rotas: ['imgs/jungle-icon.png', 'imgs/top-icon.png'], img: 'imgs/champions/wukong-logo.avif'},
+    { name: 'Xin-Zhao', rotas: ['imgs/jungle-icon.png'], img: 'imgs/champions/xin-zhao-logo.avif' },
+    { name: 'Riven', rotas: ['imgs/jungle-icon.png', 'imgs/top-icon.png'], img: 'imgs/champions/riven-logo.avif' },
+    { name: 'Viego', rotas: ['imgs/jungle-icon.png', 'imgs/top-icon.png'], img: 'imgs/champions/viego-logo.avif' },
+    { name: 'Lilia', rotas: ['imgs/jungle-icon.png'], img: 'imgs/champions/lilia-logo.avif' },
+    { name: 'Rengar', rotas: ['imgs/jungle-icon.png'], img: 'imgs/champions/rengar-logo.avif' },
+    { name: 'Volibear', rotas: ['imgs/jungle-icon.png', 'imgs/top-icon.png'], img: 'imgs/champions/volibear-logo.avif' } 
+
 ];
 
 const input = document.getElementById('championInput');
@@ -52,9 +53,12 @@ function addChampionToTable(champion) {
     // Cria uma string para as imagens das rotas
     const routeImages = champion.rotas.map(route => `<img src="${route}" width="30" alt="">`).join(' ');
 
+    // Verifica se a propriedade de imagem do campeão existe antes de usá-la
+    const championImage = champion.img ? `<img src="${champion.img}" width="40" height="40" alt="${champion.name}">` : '';
+
     newRow.innerHTML = `
         <td>${routeImages}</td> <!-- Adiciona todas as imagens na mesma célula -->
-        <td id="img-icon-campeao"><img src="imgs/${champion.name.toLowerCase()}-logo.avif" width="40" alt=""> ${champion.name}</td>
+        <td id="img-icon-campeao">${championImage} ${champion.name}</td>
         <td>
             <button class="btn-delete"><i class="fa-solid fa-trash"></i></button>
         </td>
@@ -71,6 +75,7 @@ function addChampionToTable(champion) {
         updateChampionCount();
     });
 }
+
 
 
 
