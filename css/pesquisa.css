@@ -60,4 +60,28 @@
     width: 300px;
 }
 
-.
+.options-list {
+    position: absolute;
+    background-color: var(--highlight-color);
+    color: var(--text-color);
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    width: 100%;
+    z-index: 1000;
+    max-height: 150px;
+    overflow-y: auto;
+    display: none;
+}
+
+.options-list li {
+    padding: 10px;
+    cursor: pointer;
+    color: var(--text-color);
+}
+
+.options-list li:hover {
+    background-color: var(--accent-color);
+}

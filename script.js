@@ -1,120 +1,82 @@
-const campeos = [
-    {nome: 'Wukong'},
-    {nome: 'Xin-Zhao'},
-    {nome: 'Riven'},
-    {nome: 'Viego'},
-    {nomw: 'Lilia'}
+const champions = [
+    { name: 'Wukong', rotas: ['imgs/jungle-icon.png'] },
+    { name: 'Xin Zhao', rotas: ['imgs/Top-icon.png'] },
+    { name: 'Riven', rotas: ['imgs/jungle-icon.png'] },
+    { name: 'Viego', rotas: ['imgs/jungle-icon.png'] },
+    { name: 'Lilia', rotas: ['imgs/jungle-icon.png'] },
+    { name: 'Rengar', rotas: ['imgs/jungle-icon.png'] },
+    { name: 'Volibear', rotas: ['imgs/jungle-icon.png', 'imgs/Top-icon.png'] } 
 ];
 
+const input = document.getElementById('championInput');
+const optionsList = document.getElementById("optionsList");
+const tableBody = document.querySelector("tbody");
+const totalRow = document.querySelector("tfoot td:nth-child(2)");
 
+// Função para filtrar e mostrar opções
+input.addEventListener('input', () => {
+    const filter = input.value.toLowerCase();
+    optionsList.innerHTML = ""; // Limpa a lista anterior
+    const filterChampions = champions.filter(champion => champion.name.toLowerCase().includes(filter));
 
-
-
-// TABELA
-
-let nomeInput = '';
-let numeroInput = '';
-let linhas = [];
-let nomes = [];
-let contatos = [];
-let totalContatos = 0;
-const form = document.getElementById('modal-form');
-
-// Função para adicionar eventos ao botao de  excluir
-function adicionarEventosBotoes() {
-    const botoesExcluir = document.querySelectorAll(".btn-delete");
-
-    botoesExcluir.forEach((botao, index) => {
-        botao.addEventListener("click", () => excluirContato(index));
-    });
-}
-
-
-
-// Função para excluir contato
-function excluirContato(index) {
-    linhas.splice(index, 1);
-    atualizarTabela();       
-}
-
-// Função para atualizar a tabela após excluir
-function atualizarTabela() {
-    const corpoTabela = document.querySelector("tbody");
-    corpoTabela.innerHTML = linhas.join(''); 
-    atualizaTotalContatos();                 
-    adicionarEventosBotoes();               
-}
-
-
-
-
-
-// botao de salvar contato 
-saveBtn.addEventListener('click', () => {
-    nomeInput = document.getElementById('item-name').value;
-    numeroInput = document.getElementById('item-number').value;
-
-    if (nomes.includes(nomeInput)) {
-        alert(`O nome ${nomeInput} ja pertence a um contato, salve o contato com outro nome`)
-    } else if (contatos.includes(numeroInput)) {
-        alert(`O numero ${numeroInput} ja pertence a um contato, salve o contato com outro numero`)
-    } else if (!/^\d+$/.test(numeroInput)) {
-        alert("Por favor, insira apenas números no campo de número.");
+    // Se houver opções filtradas, apareça a lista
+    if (filterChampions.length > 0 && filter) {
+        optionsList.style.display = 'block'; // Mostra a lista
+        filterChampions.forEach(champion => {
+            const li = document.createElement('li');
+            li.textContent = champion.name;
+            li.addEventListener('click', () => {
+                addChampionToTable(champion); // Adiciona campeão à tabela
+                input.value = ''; // Limpa o input
+                optionsList.style.display = 'none'; // Oculta a lista
+            });
+            optionsList.appendChild(li);
+        });
     } else {
-        nomes.push(nomeInput);
-        contatos.push(numeroInput)
-        let linha = '<tr>';
-        linha += `<td>${nomeInput}</td>`;
-        linha += `<td>${numeroInput}</td>`;
-        linha += `
+        optionsList.style.display = 'none'; // Oculta a lista se não houver opções
+    }
+});
+
+// Oculta a lista se clicar fora do input
+document.addEventListener('click', (event) => {
+    if (!input.contains(event.target) && !optionsList.contains(event.target)) {
+        optionsList.style.display = 'none';
+    }
+});
+
+// Função para adicionar campeão à tabela
+function addChampionToTable(champion) {
+    // Cria uma nova linha para o campeão
+    const newRow = document.createElement('tr');
+
+    // Cria uma string para as imagens das rotas
+    const routeImages = champion.rotas.map(route => `<img src="${route}" width="30" alt="">`).join(' ');
+
+    newRow.innerHTML = `
+        <td>${routeImages}</td> <!-- Adiciona todas as imagens na mesma célula -->
+        <td id="img-icon-campeao"><img src="imgs/${champion.name.toLowerCase()}-logo.avif" width="40" alt=""> ${champion.name}</td>
         <td>
             <button class="btn-delete"><i class="fa-solid fa-trash"></i></button>
-        </td>`;
-        linha += `</tr>`;
-    
-        linhas.push(linha); 
+        </td>
+    `;
 
-        totalContatos += 1;
-    }
+    // Adiciona a nova linha ao corpo da tabela
+    tableBody.appendChild(newRow);
+    updateChampionCount();
 
-
-
-    const corpoTabela = document.querySelector('tbody');
-    corpoTabela.innerHTML = linhas.join('');
-
-    atualizaTotalContatos();
-    adicionarEventosBotoes();
-
-    clearInputs();
-    toggleModal(false);
-});
-
-function atualizaTotalContatos() {
-    let linhape = `<tr>`;
-    linhape += `<td>Total</td>`;
-    linhape += `<td colspan="5">${totalContatos} Contatos</td>`;
-    linhape += `</tr>`;
-
-    const rodapeTabela = document.querySelector('tfoot');
-    rodapeTabela.innerHTML = linhape;
+    // Adiciona evento para remover a linha
+    const deleteButton = newRow.querySelector('.btn-delete');
+    deleteButton.addEventListener('click', () => {
+        tableBody.removeChild(newRow);
+        updateChampionCount();
+    });
 }
 
 
 
-// Realizar pesquisa
-const pesquisaInput = document.querySelector('.pergunta');
-pesquisaInput.addEventListener("input", () => {
-    const termoPesquisa = pesquisaInput.value.toLowerCase();
-    const linhasTabela = document.querySelectorAll('tbody tr');
-
-    linhasTabela.forEach(linha => {
-        const nomeContato = linha.querySelector("td:first-child").textContent.toLowerCase();
-        const numeroContato = linha.querySelector("td:nth-child(2)").textContent.toLowerCase();
-
-        if (nomeContato.includes(termoPesquisa) || numeroContato.includes(termoPesquisa)) {
-            linha.style.display = "";
-        } else {
-            linha.style.display = "none";
-        }
-    });
-});
+// Função para atualizar a contagem de campeões
+function updateChampionCount() {
+    const rows = tableBody.querySelectorAll('tr');
+    const totalChampions = rows.length;
+    totalRow.textContent = `${totalChampions} Campeões`;
+}

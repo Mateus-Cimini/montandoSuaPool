@@ -8,8 +8,6 @@
 :root {
     --background-color: #141c24;
     --secondary-color: #2d3748;
-
-
     --text-color: #ffffff; 
     --secodary-text-color: #434445;
     --accent-color: #4a5568; 
@@ -29,7 +27,7 @@ body {
 
 header {
     background-color: var(--secondary-color);
-    color: var(--text-color) ;
+    color: var(--text-color);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -39,7 +37,6 @@ header {
     border-bottom-left-radius: 50px; 
     border-bottom-right-radius: 50px;
 }
-
 
 header a {
     text-decoration: none;
@@ -52,11 +49,9 @@ header a {
     padding: 7px;
 }
 
-
-
 .pesquisarMenu {
     background-color: var(--secondary-color);
-    color: var(--text-color) ;
+    color: var(--text-color);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -86,7 +81,7 @@ table {
 
 table td {
     text-align: center;
-    padding: 5px 0px;
+    padding: 10px;
 }
 
 thead {
@@ -101,9 +96,27 @@ thead {
 tbody {
     background-color: var(--background-color);
     font-size: 20px;
-    height: 30px;
     cursor: default;
     color: var(--text-color);
+}
+
+#img-icon-campeao {
+    display: flex;
+    align-items: center;
+    justify-content: center; 
+    gap: 10px;
+}
+
+#img-icon-campeao img {
+    border-radius: 50%;
+    border: solid 1px rgb(235, 119, 206);
+    display: block;
+    width: 40px; 
+    height: 40px; 
+}
+
+table td img {
+    vertical-align: middle; 
 }
 
 tbody tr:nth-child(odd) {
@@ -150,50 +163,45 @@ footer a {
     text-decoration: none;
 }
 
-
-
-
-
 /* 0px - 480px = smartphones */
 @media (max-width: 480px) {
-        body {
-            font-size: 14px; /* Reduz o tamanho da fonte para melhor legibilidade em telas pequenas */
-        }
-    
-        .containerMenus {
-            flex-direction: column; /* Empilha os menus em uma coluna */
-            align-items: center; /* Centraliza os itens */
-            padding: 10px; /* Adiciona um pouco de padding */
-        }
-    
-        .contatosMenu,
-        .adicionarMenu,
-        .pesquisa {
-            flex: 1 1 100%; /* Cada menu ocupa 100% da largura */
-            margin: 10px 0; /* Espaçamento vertical entre os menus */
-        }
-    
-        .pesquisa input {
-            width: 100%; /* O campo de pesquisa ocupa toda a largura do menu */
-            padding: 8px; /* Aumenta o padding para um toque mais fácil */
-        }
-    
-        .tabela-scroll {
-            max-height: 200px; /* Ajusta a altura máxima da tabela */
-            overflow-y: auto; /* Mantém a barra de rolagem se necessário */
-        }
-    
-        table {
-            width: 100%; /* A tabela ocupa toda a largura disponível */
-            font-size: 12px; /* Reduz o tamanho da fonte da tabela */
-        }
-    
-        th, td {
-            padding: 8px; /* Ajusta o padding das células da tabela */
-        }
-    
-        .btn-delete {
-            padding: 5px; /* Ajusta o padding do botão para facilitar o toque */
-        }
+    body {
+        font-size: 14px; /* Reduz o tamanho da fonte para melhor legibilidade em telas pequenas */
     }
-    
+
+    .containerMenus {
+        flex-direction: column; /* Empilha os menus em uma coluna */
+        align-items: center; /* Centraliza os itens */
+        padding: 10px; /* Adiciona um pouco de padding */
+    }
+
+    .contatosMenu,
+    .adicionarMenu,
+    .pesquisa {
+        flex: 1 1 100%; /* Cada menu ocupa 100% da largura */
+        margin: 10px 0; /* Espaçamento vertical entre os menus */
+    }
+
+    .pesquisa input {
+        width: 100%; /* O campo de pesquisa ocupa toda a largura do menu */
+        padding: 8px; /* Aumenta o padding para um toque mais fácil */
+    }
+
+    .tabela-scroll {
+        max-height: 200px; /* Ajusta a altura máxima da tabela */
+        overflow-y: auto; /* Mantém a barra de rolagem se necessário */
+    }
+
+    table {
+        width: 100%; /* A tabela ocupa toda a largura disponível */
+        font-size: 12px; /* Reduz o tamanho da fonte da tabela */
+    }
+
+    th, td {
+        padding: 8px; /* Ajusta o padding das células da tabela */
+    }
+
+    .btn-delete {
+        padding: 5px; /* Ajusta o padding do botão para facilitar o toque */
+    }
+}

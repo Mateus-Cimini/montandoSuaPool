@@ -7,3 +7,6 @@ botao.addEventListener("click", () => {
     pesquisa.classList.toggle("active");
     pergunta.focus();
 });
+
+
+
