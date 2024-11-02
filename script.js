@@ -1,7 +1,7 @@
 const champions = [
     { name: 'Aatrox', rotas: ['imgs/top-icon.png','imgs/jungle-icon.png' ], img: 'imgs/champions/aatrox-logo.webp' },
     { name: 'Ahri', rotas: ['imgs/mid-icon.png'], img: 'imgs/champions/ahri-logo.webp' },
-    { name: 'Akali', rotas: ['imgs/top-icon.png','imgs/jungle-icon.png' ], img: 'imgs/champions/akali-logo.webp' },
+    { name: 'Akali', rotas: ['imgs/top-icon.png','imgs/mid-icon.png' ], img: 'imgs/champions/akali-logo.webp' },
     { name: 'Akshan', rotas: ['imgs/mid-icon.png'], img: 'imgs/champions/akshan-logo.webp' },
     { name: 'Alistar', rotas: ['imgs/sup-icon.png'], img: 'imgs/champions/alistar-logo.webp' },
     { name: 'Amumu', rotas: ['imgs/top-icon.png','imgs/jungle-icon.png','imgs/sup-icon.png' ], img: 'imgs/champions/amumu-logo.webp' },
@@ -53,7 +53,7 @@ const champions = [
     { name: 'Lillia', rotas: ['imgs/jungle-icon.png'], img: 'imgs/champions/lilia-logo.avif' },
     { name: 'Lissandra', rotas: ['imgs/mid-icon.png'], img: 'imgs/champions/lissandra-logo.webp' },
     { name: 'Lucian', rotas: ['imgs/adc-icon.png'], img: 'imgs/champions/lucian-logo.webp' },
-    { name: 'Lulu', rotas: ['imgs/lulu-icon.png'], img: 'imgs/champions/lulu-logo.webp' },
+    { name: 'Lulu', rotas: ['imgs/sup-icon.png'], img: 'imgs/champions/lulu-logo.webp' },
     { name: 'Lux', rotas: ['imgs/mid-icon.png','imgs/sup-icon.png'], img: 'imgs/champions/lux-logo.png' },
     { name: 'Malphite', rotas: ['imgs/top-icon.png','imgs/jungle-icon.png', 'imgs/sup-icon.png'], img: 'imgs/champions/malphite-logo.webp' },
     { name: 'Maokai', rotas: ['imgs/top-icon.png','imgs/jungle-icon.png', 'imgs/sup-icon.png'], img: 'imgs/champions/maokai-logo.webp' },
